@@ -1,0 +1,21 @@
+%h1= t('.matches')
+
+%table
+  %tr
+    %th= ta(:match, :played_at)
+    %th= ta(:match, :league)
+    %th= ta(:match, :teams)
+    %th= ta(:match, :score)
+    %th
+    %th
+
+  - @matches.each do |match|
+    %tr
+      %td= l match.played_at, :format => :short
+      %td= match.league.name if match.league
+      %td= link_to match.teams, [:admin, match]
+      %td= match.score
+      %td= link_to t('support.edit'), edit_admin_match_path(match)
+      %td= link_to t('support.delete'), [:admin, match], :method => :delete, :data => { :confirm => t('support.confirm') }
+
+= link_to t('.new'), new_admin_match_path

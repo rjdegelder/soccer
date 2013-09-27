@@ -1,0 +1,15 @@
+%h1= t('.leagues')
+
+%table
+  %tr
+    %th= ta(:league, :name)
+    %th
+    %th
+
+  - @leagues.each do |league|
+    %tr
+      %td= link_to league.name, [:admin, league]
+      %td= link_to t('support.edit'), edit_admin_league_path(league)
+      %td= link_to t('support.delete'), [:admin, league], :method => :delete, :data => { :confirm => t('support.confirm') }
+
+= link_to t('.new'), new_admin_league_path

@@ -11,11 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808095238) do
+ActiveRecord::Schema.define(version: 20130926201044) do
+
+  create_table "leagues", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "matches", force: true do |t|
     t.integer  "home_team_id"
     t.integer  "away_team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "played_at"
+    t.integer  "home_team_goals"
+    t.integer  "away_team_goals"
+    t.integer  "league_id"
+  end
+
+  add_index "matches", ["league_id"], name: "index_matches_on_league_id"
+
+  create_table "rankings", force: true do |t|
+    t.integer  "league_id"
+    t.integer  "team_id"
+    t.integer  "played",        default: 0
+    t.integer  "points",        default: 0
+    t.integer  "won",           default: 0
+    t.integer  "lost",          default: 0
+    t.integer  "drawn",         default: 0
+    t.integer  "goals",         default: 0
+    t.integer  "goals_against", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,11 @@
+= simple_form_for [:admin, @ranking] do |f|
+  = f.association :league
+  = f.association :team
+  = f.input :played
+  = f.input :points
+  = f.input :won
+  = f.input :lost
+  = f.input :drawn
+  = f.input :goals
+  = f.input :goals_against
+  = f.submit
