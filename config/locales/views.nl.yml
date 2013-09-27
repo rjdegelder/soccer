@@ -1,0 +1,61 @@
+nl:
+  admin:
+    leagues:
+      index:
+        leagues: Competities
+        new: Nieuwe competitie
+
+      new:
+        new: Nieuwe competitie
+
+      edit:
+        edit: Competitie bewerken
+
+      created: Competitie opgeslagen
+      updated: Competitie gewijzigd
+      destroyed: Competitie verwijderd
+
+    matches:
+      index:
+        matches: Wedstrijden
+        new: Nieuwe wedstrijd
+
+      new:
+        new: Nieuwe wedstrijd
+
+      edit:
+        edit: Wedstrijd bewerken
+
+      created: Wedstrijd opgeslagen
+      updated: Wedstrijd gewijzigd
+      destroyed: Wedstrijd verwijderd
+
+    rankings:
+      index:
+        rankings: Standen
+        new: Nieuwe stand
+
+      new:
+        new: Nieuwe stand
+
+      edit:
+        edit: Stand bewerken
+
+      created: Stand opgeslagen
+      updated: Stand gewijzigd
+      destroyed: Stand verwijderd
+
+    teams:
+      index:
+        teams: Teams
+        new: Nieuw team
+
+      new:
+        new: Nieuw team
+
+      edit:
+        edit: Team bewerken
+
+      created: Team opgeslagen
+      updated: Team gewijzigd
+      destroyed: Team verwijderd

@@ -1,0 +1,42 @@
+nl:
+  activerecord:
+    models:
+      league: Competitie
+      match: Wedstrijd
+      team: Team
+      ranking: Stand
+
+    attributes:
+      league:
+        name: Naam
+
+      match:
+        home_team: Team (thuis)
+        away_team: Team (uit)
+        played_at: Gespeeld op
+        played_at_date: Datum
+        played_at_time: Aftrap
+        teams: Wedstrijd
+        score: Uitslag
+        league: Competitie
+        home_team_goals: Goals
+        away_team_goals: Goals
+
+      team:
+        name: Naam
+
+      ranking:
+        league: Competitie
+        team: Team
+        played: Gespeeld
+        points: Punten
+        won: Gewonnen
+        lost: Verloren
+        drawn: Gelijk
+        goals: Doelpunten
+        goals_against: Tegendoelpunten
+
+  support:
+    edit: bewerken
+    delete: verwijderen
+    confirm: Weet u zeker dat u dit item wilt verwijderen
