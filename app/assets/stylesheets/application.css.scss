@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require jquery.ui.datepicker
+ *= require jquery.ui.autocomplete
  *= require jquery-ui-timepicker
  */
 
@@ -52,5 +53,11 @@ form.simple_form {
   }
   input[type=submit] {
     margin-left: 150px;
+  }
+  input[type=checkbox] {
+    width: auto;
+    margin-top: 10px;
+    width: 15px;
+    height: 15px;
   }
 }

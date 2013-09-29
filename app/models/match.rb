@@ -13,12 +13,14 @@ class Match < ActiveRecord::Base
 
   after_save :update_ranking
 
+  attr_accessor :process_score
+
   def teams
     "#{home_team.name} - #{away_team.name}"
   end
 
   def score
-    "#{home_team_goals} - #{away_team_goals}"
+    Score.new(home_team_goals, away_team_goals)
   end
 
   def played?
@@ -26,7 +28,7 @@ class Match < ActiveRecord::Base
   end
 
   def update_ranking
-    if home_team_goals.present? && away_team_goals.present?
+    if process_score? && home_team_goals.present? && away_team_goals.present?
       ScoreCalculator.instance.process self
     end
   end
@@ -55,6 +57,26 @@ class Match < ActiveRecord::Base
     else
       self.played_at = played_at.change :hour => time.hour, :min => time.min
     end
+  end
+
+  def home_team_name
+    home_team.try(:name)
+  end
+
+  def home_team_name= value
+    self.home_team = Team.find_or_create_by(:name => value)
+  end
+
+  def away_team_name
+    away_team.try(:name)
+  end
+
+  def away_team_name= value
+    self.away_team = Team.find_or_create_by(:name => value)
+  end
+
+  def process_score?
+    self.process_score.match(/(true|t|yes|y|1)$/i) != nil
   end
 
 end

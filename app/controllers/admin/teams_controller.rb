@@ -2,6 +2,13 @@ class Admin::TeamsController < Admin::BaseController
 
   def index
     @teams = Team.all
+    if params[:term]
+      @teams = @teams.where('name LIKE ?', "%#{params[:term]}%")
+    end
+    respond_to do |format|
+      format.html
+      format.json { render :json => @teams, :only => [:id, :name] }
+    end
   end
 
   def new

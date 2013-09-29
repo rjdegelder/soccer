@@ -11,8 +11,8 @@ nl:
         name: Naam
 
       match:
-        home_team: Team (thuis)
-        away_team: Team (uit)
+        home_team_name: Team (thuis)
+        away_team_name: Team (uit)
         played_at: Gespeeld op
         played_at_date: Datum
         played_at_time: Aftrap
@@ -21,6 +21,7 @@ nl:
         league: Competitie
         home_team_goals: Goals
         away_team_goals: Goals
+        process_score: Verwerk score
 
       team:
         name: Naam

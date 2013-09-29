@@ -1,9 +1,12 @@
 Soccer::Application.routes.draw do
   namespace :admin do
     resources :teams
-    resources :matches
-    resources :rankings
-    resources :leagues
+    resources :matches do
+      get :score, :to => 'matches#score'
+    end
+    resources :leagues do
+      resource :ranking
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

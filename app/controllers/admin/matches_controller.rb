@@ -12,6 +12,10 @@ class Admin::MatchesController < Admin::BaseController
     @match = Match.find params[:id]
   end
 
+  def score
+    @match = Match.find params[:match_id]
+  end
+
   def create
     @match = Match.new match_params
     if @match.save
@@ -39,6 +43,7 @@ class Admin::MatchesController < Admin::BaseController
   private
 
   def match_params
-    params.require(:match).permit(:home_team_id, :away_team_id, :played_at_date, :played_at_time, :home_team_goals, :away_team_goals, :league_id)
+    params.require(:match).permit(:home_team_name, :away_team_name, :played_at_date,
+      :played_at_time, :home_team_goals, :away_team_goals, :league_id, :process_score)
   end
 end

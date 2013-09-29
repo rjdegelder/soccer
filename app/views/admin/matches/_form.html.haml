@@ -2,22 +2,30 @@
   = f.association :league
   = f.input :played_at_date, :as => :string, :input_html => { :class => 'datepicker', :value => @match.played_at.present? ? l(@match.played_at_date) : nil }
   = f.input :played_at_time, :as => :string, :input_html => { :class => 'timepicker', :value => @match.played_at.present? ? l(@match.played_at_time, :format => :short_time) : nil }
-  = f.association :home_team
-  = f.association :away_team
-  = f.input :home_team_goals
-  = f.input :away_team_goals
+  = f.input :home_team_name
+  = f.input :away_team_name
   = f.submit
 
 :coffeescript
-  $('.datepicker').datepicker(
+  $('.datepicker').datepicker
     dateFormat: "dd/mm/yy",
     todayHighlight: true,
     todayBtn: 'linked',
     autoclose: true
-  )
 
-  $('.timepicker').timepicker(
+  $('.timepicker').timepicker
     timeFormat: "H:i",
     scrollDefaultTime: '12:00',
-    step: 15,
-  )
+    step: 15
+
+  $('#match_home_team_name, #match_away_team_name').autocomplete
+    source: (request, response) ->
+      $.ajax(
+        url: '/admin/teams',
+        dataType: 'json',
+        data: request,
+        success: (json) ->
+          response(json.map (team) ->
+            { value: team.name, label: team.name, id: team.id }
+          )
+      )

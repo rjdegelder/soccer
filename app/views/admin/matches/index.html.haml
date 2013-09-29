@@ -14,7 +14,7 @@
       %td= l match.played_at, :format => :short
       %td= match.league.name if match.league
       %td= link_to match.teams, [:admin, match]
-      %td= match.score
+      %td= link_to match.score, admin_match_score_path(match)
       %td= link_to t('support.edit'), edit_admin_match_path(match)
       %td= link_to t('support.delete'), [:admin, match], :method => :delete, :data => { :confirm => t('support.confirm') }
 

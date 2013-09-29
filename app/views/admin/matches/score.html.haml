@@ -1,0 +1,6 @@
+%h1= @match.teams
+= simple_form_for [:admin, @match] do |f|
+  = f.input :home_team_goals
+  = f.input :away_team_goals
+  = f.input :process_score, :as => :boolean
+  = f.submit

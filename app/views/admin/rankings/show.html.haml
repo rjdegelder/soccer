@@ -1,0 +1,27 @@
+%h1= @league.name
+
+%table
+  %tr
+    %th= ta(:ranking, :team)
+    %th= ta(:ranking, :played)
+    %th= ta(:ranking, :points)
+    %th= ta(:ranking, :won)
+    %th= ta(:ranking, :lost)
+    %th= ta(:ranking, :drawn)
+    %th= ta(:ranking, :goals)
+    %th= ta(:ranking, :goals_against)
+    %th
+    %th
+
+  - @rankings.each do |ranking|
+    %tr
+      %td= link_to ranking.team.name, [:admin, ranking.team]
+      %td= ranking.played
+      %td= ranking.points
+      %td= ranking.won
+      %td= ranking.drawn
+      %td= ranking.lost
+      %td= ranking.goals
+      %td= ranking.goals_against
+      %td= link_to t('support.edit'), edit_admin_league_ranking_path(ranking.league)
+      %td= link_to t('support.delete'), [:admin, ranking.league, :ranking], :method => :delete, :data => { :confirm => t('support.confirm') }
