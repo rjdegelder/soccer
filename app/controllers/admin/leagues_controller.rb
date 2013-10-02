@@ -12,6 +12,16 @@ class Admin::LeaguesController < Admin::BaseController
     @league = League.find params[:id]
   end
 
+  def match
+    @league = League.find params[:league_id]
+    @league.matches.build match_params.merge({:process_score => true})
+    if @league.save
+      redirect_to admin_league_rankings_url(@league), notice: t('admin.leagues.match_added')
+    else
+      render action: 'new'
+    end
+  end
+
   def create
     @league = League.new league_params
     if @league.save
@@ -40,5 +50,9 @@ class Admin::LeaguesController < Admin::BaseController
 
   def league_params
     params.require(:league).permit(:name)
+  end
+
+  def match_params
+    params.require(:match).permit(:home_team_id, :away_team_id, :home_team_goals, :away_team_goals)
   end
 end

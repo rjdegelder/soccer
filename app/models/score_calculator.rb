@@ -28,4 +28,13 @@ class ScoreCalculator
     match.away_team_goals > match.home_team_goals
   end
 
+  def reprocess_league league
+    league.transaction do
+      league.rankings.destroy_all
+      league.matches.each do |match|
+        process match if match.score_inserted?
+      end
+    end
+  end
+
 end

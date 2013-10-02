@@ -1,0 +1,7 @@
+= simple_form_for Match.new, :url => admin_league_match_path(@league) do |f|
+  = f.input :played_at, :as => :string, :input_html => { :class => 'datepicker' }
+  = f.input :home_team_id, :as => :select, :collection => @league.teams, :label => false
+  = f.input :away_team_id, :as => :select, :collection => @league.teams, :label => false
+  = f.input :home_team_goals, :as => :integer
+  = f.input :away_team_goals, :as => :integer
+  = f.submit

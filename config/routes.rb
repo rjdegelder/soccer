@@ -6,7 +6,8 @@ Soccer::Application.routes.draw do
       get :score, :to => 'matches#score'
     end
     resources :leagues do
-      resource :ranking
+      resources :rankings
+      post :match
     end
   end
 

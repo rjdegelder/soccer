@@ -14,6 +14,7 @@ nl:
       created: Competitie opgeslagen
       updated: Competitie gewijzigd
       destroyed: Competitie verwijderd
+      match_added: Wedstrijd toegevoegd aan de stand
 
     matches:
       index:

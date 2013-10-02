@@ -1,5 +1,10 @@
 class Admin::RankingsController < Admin::BaseController
 
+  def index
+    @league = League.find params[:league_id]
+    @rankings = @league.ranking
+  end
+
   def show
     @league = League.find params[:league_id]
     @rankings = @league.ranking

@@ -1,9 +1,8 @@
-%h1= t('.rankings')
+%h1= @league.name
 
 %table
   %tr
     %th= ta(:ranking, :team)
-    %th= ta(:ranking, :league)
     %th= ta(:ranking, :played)
     %th= ta(:ranking, :points)
     %th= ta(:ranking, :won)
@@ -17,7 +16,6 @@
   - @rankings.each do |ranking|
     %tr
       %td= link_to ranking.team.name, [:admin, ranking.team]
-      %td= link_to ranking.league.name, [:admin, ranking.league]
       %td= ranking.played
       %td= ranking.points
       %td= ranking.won
@@ -25,7 +23,7 @@
       %td= ranking.lost
       %td= ranking.goals
       %td= ranking.goals_against
-      %td= link_to t('support.edit'), edit_admin_ranking_path(ranking)
-      %td= link_to t('support.delete'), [:admin, ranking], :method => :delete, :data => { :confirm => t('support.confirm') }
+      %td= link_to t('support.edit'), edit_admin_league_ranking_path(ranking.league)
+      %td= link_to t('support.delete'), [:admin, ranking.league, :ranking], :method => :delete, :data => { :confirm => t('support.confirm') }
 
-= link_to t('.new'), new_admin_ranking_path
+= render 'match_form'

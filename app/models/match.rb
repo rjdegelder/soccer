@@ -23,12 +23,8 @@ class Match < ActiveRecord::Base
     Score.new(home_team_goals, away_team_goals)
   end
 
-  def played?
-    played_at < Time.current
-  end
-
   def update_ranking
-    if process_score? && home_team_goals.present? && away_team_goals.present?
+    if process_score?
       ScoreCalculator.instance.process self
     end
   end
@@ -76,7 +72,11 @@ class Match < ActiveRecord::Base
   end
 
   def process_score?
-    process_score.to_s.match(/(true|t|yes|y|1)$/i) != nil
+    process_score.to_s.match(/(true|t|yes|y|1)$/i) != nil && score_inserted?
+  end
+
+  def score_inserted?
+    home_team_goals.present? && away_team_goals.present?
   end
 
 end
