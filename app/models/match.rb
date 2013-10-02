@@ -76,7 +76,7 @@ class Match < ActiveRecord::Base
   end
 
   def process_score?
-    self.process_score.match(/(true|t|yes|y|1)$/i) != nil
+    process_score.to_s.match(/(true|t|yes|y|1)$/i) != nil
   end
 
 end
