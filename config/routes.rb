@@ -1,5 +1,6 @@
 Soccer::Application.routes.draw do
   namespace :admin do
+    root 'dashboard#show'
     resources :teams
     resources :matches do
       get :score, :to => 'matches#score'
