@@ -1,3 +1,5 @@
 = simple_form_for [:admin, @league] do |f|
   = f.input :name
+  = f.input :starts_on, :as => :string, :input_html => { :class => 'datepicker', :value => @league.starts_on.present? ? l(@league.starts_on) : nil }
+  = f.input :ends_on, :as => :string, :input_html => { :class => 'datepicker', :value => @league.ends_on.present? ? l(@league.ends_on) : nil }
   = f.submit

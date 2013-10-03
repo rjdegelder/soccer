@@ -3,12 +3,16 @@
 %table
   %tr
     %th= ta(:league, :name)
+    %th= ta(:league, :starts_on)
+    %th= ta(:league, :ends_on)
     %th
     %th
 
   - @leagues.each do |league|
     %tr
       %td= link_to league.name, admin_league_rankings_path(league)
+      %td= l(league.starts_on) if league.starts_on.present?
+      %td= l(league.ends_on) if league.ends_on.present?
       %td= link_to t('support.edit'), edit_admin_league_path(league)
       %td= link_to t('support.delete'), [:admin, league], :method => :delete, :data => { :confirm => t('support.confirm') }
 

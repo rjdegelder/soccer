@@ -49,7 +49,7 @@ class Admin::LeaguesController < Admin::BaseController
   private
 
   def league_params
-    params.require(:league).permit(:name)
+    params.require(:league).permit(:name, :starts_on, :ends_on)
   end
 
   def match_params
