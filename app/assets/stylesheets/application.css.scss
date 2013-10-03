@@ -22,6 +22,19 @@
 body {
   font-family: 'Oxygen', sans-serif;
   font-size: 0.9em;
+  line-height: 2em;
+}
+
+a {
+  color: #363;
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  th {
+    text-align: left;
+  }
 }
 
 div.container {
@@ -44,7 +57,7 @@ form.simple_form {
   label {
     float: left;
     width: 150px;
-    padding: 10px 0 0;
+    padding-top: 4px;
   }
   input, select, textarea {
     font-size: 1em;
