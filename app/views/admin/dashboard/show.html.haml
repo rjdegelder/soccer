@@ -1,1 +1,39 @@
 %h1 Dashboard
+
+%h3= t('.next_match')
+= l(@next_match.played_at_date, :format => :with_day) if @next_match.played_at.present?
+= l(@next_match.played_at_time, :format => :short_time) if @next_match.played_at.present?
+= @next_match.league.name if @next_match.league
+= link_to @next_match.teams, [:admin, @next_match]
+= link_to @next_match.score, admin_match_score_path(@next_match)
+= link_to t('support.edit'), edit_admin_match_path(@next_match)
+= link_to t('support.delete'), [:admin, @next_match], :method => :delete, :data => { :confirm => t('support.confirm') }
+
+- @leagues.each do |league|
+  %h3= league.name
+  %table
+    %tr
+      %th= ta(:ranking, :team)
+      %th= ta(:ranking, :played)
+      %th= ta(:ranking, :points)
+      %th= ta(:ranking, :won)
+      %th= ta(:ranking, :lost)
+      %th= ta(:ranking, :drawn)
+      %th= ta(:ranking, :goals)
+      %th= ta(:ranking, :goals_against)
+      %th
+      %th
+
+    - league.rankings.each do |ranking|
+      %tr
+        %td= link_to ranking.team.name, [:admin, ranking.team]
+        %td= ranking.played
+        %td= ranking.points
+        %td= ranking.won
+        %td= ranking.drawn
+        %td= ranking.lost
+        %td= ranking.goals
+        %td= ranking.goals_against
+        %td= link_to t('support.edit'), edit_admin_league_ranking_path(league, ranking)
+        %td= link_to t('support.delete'), [:admin, league, ranking], :method => :delete, :data => { :confirm => t('support.confirm') }
+
