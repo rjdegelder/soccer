@@ -3,6 +3,7 @@ class Admin::RankingsController < Admin::BaseController
   def index
     @league = League.find params[:league_id]
     @rankings = @league.ranking
+    @match = @league.matches.build
   end
 
   def show

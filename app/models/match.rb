@@ -34,6 +34,7 @@ class Match < ActiveRecord::Base
   end
 
   def played_at_date= value
+    return if value.blank?
     date = DateTime.parse value
     if played_at.nil?
       self.played_at = date
@@ -47,6 +48,7 @@ class Match < ActiveRecord::Base
   end
 
   def played_at_time= value
+    return if value.blank?
     time = DateTime.parse value
     if played_at.nil?
       self.played_at = time

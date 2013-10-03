@@ -1,4 +1,5 @@
 class Ranking < ActiveRecord::Base
+
   belongs_to :team
   belongs_to :league
 
@@ -31,4 +32,5 @@ class Ranking < ActiveRecord::Base
     self.goals += goals
     self.goals_against += goals_against
   end
+
 end

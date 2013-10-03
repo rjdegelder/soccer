@@ -2,7 +2,8 @@
 
 %table
   %tr
-    %th= ta(:match, :played_at)
+    %th= ta(:match, :played_at_date)
+    %th= ta(:match, :played_at_time)
     %th= ta(:match, :league)
     %th= ta(:match, :teams)
     %th= ta(:match, :score)
@@ -11,7 +12,8 @@
 
   - @matches.each do |match|
     %tr
-      %td= l(match.played_at, :format => :short) if match.played_at.present?
+      %td= l(match.played_at_date, :format => :with_day) if match.played_at.present?
+      %td= l(match.played_at_time, :format => :short_time) if match.played_at.present?
       %td= match.league.name if match.league
       %td= link_to match.teams, [:admin, match]
       %td= link_to match.score, admin_match_score_path(match)

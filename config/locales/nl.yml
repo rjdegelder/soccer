@@ -3,12 +3,15 @@ nl:
     models:
       league: Competitie
       match: Wedstrijd
+      player: Speler
       team: Team
       ranking: Stand
 
     attributes:
       league:
         name: Naam
+        starts_on: Startdatum
+        ends_on: Einddatum
 
       match:
         home_team_name: Team (thuis)
@@ -22,6 +25,10 @@ nl:
         home_team_goals: Goals
         away_team_goals: Goals
         process_score: Verwerk score
+
+      player:
+        name: Naam
+        team: Team
 
       team:
         name: Naam

@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926201044) do
+ActiveRecord::Schema.define(version: 20131003185019) do
 
   create_table "leagues", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "starts_on"
+    t.date     "ends_on"
   end
 
   create_table "matches", force: true do |t|
@@ -31,6 +33,15 @@ ActiveRecord::Schema.define(version: 20130926201044) do
   end
 
   add_index "matches", ["league_id"], name: "index_matches_on_league_id"
+
+  create_table "players", force: true do |t|
+    t.string   "name"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "players", ["team_id"], name: "index_players_on_team_id"
 
   create_table "rankings", force: true do |t|
     t.integer  "league_id"

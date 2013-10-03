@@ -11,6 +11,10 @@ class Admin::TeamsController < Admin::BaseController
     end
   end
 
+  def show
+    @team = Team.find params[:id]
+  end
+
   def new
     @team = Team.new
   end

@@ -1,5 +1,9 @@
 nl:
   admin:
+    dashboard:
+      show:
+        next_match: Volgende wedstrijd
+
     leagues:
       index:
         leagues: Competities
@@ -23,6 +27,21 @@ nl:
 
       new:
         new: Nieuwe wedstrijd
+
+      edit:
+        edit: Wedstrijd bewerken
+
+      created: Wedstrijd opgeslagen
+      updated: Wedstrijd gewijzigd
+      destroyed: Wedstrijd verwijderd
+
+    players:
+      index:
+        players: Spelers
+        new: Nieuwe speler
+
+      new:
+        new: Nieuwe speler
 
       edit:
         edit: Wedstrijd bewerken

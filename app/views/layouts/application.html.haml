@@ -8,11 +8,12 @@
     = csrf_meta_tags
 
   %body
-
     .container
       %header
         %ul
+          %li= link_to 'Home', admin_root_path
           %li= link_to 'Teams', admin_teams_path
+          %li= link_to 'Spelers', admin_players_path
           %li= link_to 'Wedstrijden', admin_matches_path
           %li= link_to 'Competities', admin_leagues_path
 

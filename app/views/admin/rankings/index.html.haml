@@ -23,7 +23,5 @@
       %td= ranking.lost
       %td= ranking.goals
       %td= ranking.goals_against
-      %td= link_to t('support.edit'), edit_admin_league_ranking_path(ranking.league)
-      %td= link_to t('support.delete'), [:admin, ranking.league, :ranking], :method => :delete, :data => { :confirm => t('support.confirm') }
-
-= render 'match_form'
+      %td= link_to t('support.edit'), edit_admin_league_ranking_path(ranking.league, ranking)
+      %td= link_to t('support.delete'), [:admin, ranking.league, ranking], :method => :delete, :data => { :confirm => t('support.confirm') }
